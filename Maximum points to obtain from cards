@@ -1,0 +1,32 @@
+public class MaxPointsFromCards {
+    
+    static int maxScore(int[] c, int K){
+        int n = c.length;
+        int total = 0;
+       
+        for(int i=0 ; i<n-K ; i++)
+            total += c[i];
+        int best = total;
+        
+        
+        for(int i=0; i<K ; i++){
+            total -= c[i];
+            total += c[i+n-K];
+          
+          best = Math.max(best, total);
+      }
+        return best;
+    }
+    public static void main(String[] args){
+        int arr[] = new int[7];
+        arr[0] = 1;
+        arr[1] = 2;
+        arr[2] = 3;
+        arr[3] = 4;
+        arr[4] = 5;
+        arr[5] = 1;
+        
+        int K=3;
+        System.out.println(maxScore(arr, K));
+    }
+}
